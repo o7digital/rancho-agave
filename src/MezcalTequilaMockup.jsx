@@ -1,3 +1,6 @@
+import React from 'react';
+import heroRanchoAgave from './assets/hero-rancho-agave.jpg';
+
 export default function MezcalTequilaMockup() {
   const steps = [
     {
@@ -46,14 +49,13 @@ export default function MezcalTequilaMockup() {
       <section className="relative overflow-hidden bg-[#080808]">
         <div className="absolute inset-0">
           <img
-            src="https://images.pexels.com/photos/10039940/pexels-photo-10039940.jpeg?auto=compress&cs=tinysrgb&w=2200"
+            src={heroRanchoAgave}
             alt="Rancho mexicano al atardecer con plantaciones de agave azul"
-            className="h-full w-full object-cover object-center"
+            className="h-full w-full object-cover object-center brightness-[0.95] contrast-[1.08] saturate-[1.08]"
           />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(6,6,6,0.28),rgba(8,8,8,0.62),rgba(8,8,8,0.9),rgba(8,8,8,1))]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(8,8,8,0.78),rgba(8,8,8,0.34),rgba(8,8,8,0.66))]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_74%_24%,rgba(245,176,66,0.32),rgba(245,176,66,0.12)_22%,transparent_48%)]" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_72%,rgba(10,10,10,0.45),transparent_46%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(6,6,6,0.06),rgba(8,8,8,0.26),rgba(8,8,8,0.58),rgba(8,8,8,0.82))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(8,8,8,0.4),rgba(8,8,8,0.08),rgba(8,8,8,0.34))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_22%,rgba(245,176,66,0.24),rgba(245,176,66,0.08)_24%,transparent_54%)]" />
         </div>
 
         <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
