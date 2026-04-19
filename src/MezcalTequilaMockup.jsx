@@ -3,7 +3,7 @@ import heroRanchoAgave from './assets/hero-rancho-agave.jpg';
 import heroRanchoGolden from './assets/hero-rancho-golden.jpg';
 
 export default function MezcalTequilaMockup() {
-  const heroSlides = [heroRanchoAgave, heroRanchoGolden];
+  const heroSlides = [heroRanchoGolden, heroRanchoAgave];
   const [heroIndex, setHeroIndex] = useState(0);
 
   useEffect(() => {
