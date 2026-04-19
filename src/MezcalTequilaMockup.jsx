@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import heroRanchoAgave from './assets/hero-rancho-agave.jpg';
+import heroRanchoGolden from './assets/hero-rancho-golden.jpg';
 
 export default function MezcalTequilaMockup() {
+  const heroSlides = [heroRanchoAgave, heroRanchoGolden];
+  const [heroIndex, setHeroIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [heroSlides.length]);
+
   const steps = [
     {
       num: '01',
@@ -48,11 +59,16 @@ export default function MezcalTequilaMockup() {
     <div className="min-h-screen bg-[#080808] text-[#ead8bf] selection:bg-[#b78a2d]/40 selection:text-white">
       <section className="relative overflow-hidden bg-[#080808]">
         <div className="absolute inset-0">
-          <img
-            src={heroRanchoAgave}
-            alt="Rancho mexicano al atardecer con plantaciones de agave azul"
-            className="h-full w-full object-cover object-center brightness-[0.95] contrast-[1.08] saturate-[1.08]"
-          />
+          {heroSlides.map((slide, index) => (
+            <img
+              key={slide}
+              src={slide}
+              alt="Rancho mexicano al atardecer con plantaciones de agave azul"
+              className={`absolute inset-0 h-full w-full object-cover object-center brightness-[0.95] contrast-[1.08] saturate-[1.08] transition-opacity duration-1000 ${
+                heroIndex === index ? 'opacity-100' : 'opacity-0'
+              }`}
+            />
+          ))}
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(6,6,6,0.06),rgba(8,8,8,0.26),rgba(8,8,8,0.58),rgba(8,8,8,0.82))]" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(8,8,8,0.4),rgba(8,8,8,0.08),rgba(8,8,8,0.34))]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_22%,rgba(245,176,66,0.24),rgba(245,176,66,0.08)_24%,transparent_54%)]" />
@@ -85,6 +101,19 @@ export default function MezcalTequilaMockup() {
               <button className="rounded-full border border-[#6d5523] bg-[#14110d]/70 px-7 py-3 text-sm font-medium text-[#e8d8c0] transition hover:border-[#b8892d] hover:bg-[#1c1711]">
                 Solicitar información
               </button>
+            </div>
+            <div className="mt-6 flex items-center gap-2">
+              {heroSlides.map((_, index) => (
+                <button
+                  key={`hero-dot-${index}`}
+                  type="button"
+                  aria-label={`Voir slide ${index + 1}`}
+                  onClick={() => setHeroIndex(index)}
+                  className={`h-2.5 rounded-full transition ${
+                    heroIndex === index ? 'w-9 bg-[#d9b36a]' : 'w-2.5 bg-[#e7d5bb]/45 hover:bg-[#e7d5bb]/70'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
